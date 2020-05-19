@@ -1,0 +1,331 @@
+Initializing TensorFlow...
+Running train.train_progressive_gan()...
+Streaming data using dataset.TFRecordDataset...
+Dataset shape = [3, 256, 256]
+Dynamic range = [0, 255]
+Label size    = 0
+Constructing networks...
+
+G                           Params      OutputShape             WeightShape             
+---                         ---         ---                     ---                     
+latents_in                  -           (?, 512)                -                       
+labels_in                   -           (?, 0)                  -                       
+lod                         -           ()                      -                       
+4x4/PixelNorm               -           (?, 512)                -                       
+4x4/Dense                   4194816     (?, 512, 4, 4)          (512, 8192)             
+4x4/Conv                    2359808     (?, 512, 4, 4)          (3, 3, 512, 512)        
+ToRGB_lod6                  1539        (?, 3, 4, 4)            (1, 1, 512, 3)          
+8x8/Conv0_up                2359808     (?, 512, 8, 8)          (3, 3, 512, 512)        
+8x8/Conv1                   2359808     (?, 512, 8, 8)          (3, 3, 512, 512)        
+ToRGB_lod5                  1539        (?, 3, 8, 8)            (1, 1, 512, 3)          
+Upscale2D                   -           (?, 3, 8, 8)            -                       
+Grow_lod5                   -           (?, 3, 8, 8)            -                       
+16x16/Conv0_up              2359808     (?, 512, 16, 16)        (3, 3, 512, 512)        
+16x16/Conv1                 2359808     (?, 512, 16, 16)        (3, 3, 512, 512)        
+ToRGB_lod4                  1539        (?, 3, 16, 16)          (1, 1, 512, 3)          
+Upscale2D_1                 -           (?, 3, 16, 16)          -                       
+Grow_lod4                   -           (?, 3, 16, 16)          -                       
+32x32/Conv0_up              2359808     (?, 512, 32, 32)        (3, 3, 512, 512)        
+32x32/Conv1                 2359808     (?, 512, 32, 32)        (3, 3, 512, 512)        
+ToRGB_lod3                  1539        (?, 3, 32, 32)          (1, 1, 512, 3)          
+Upscale2D_2                 -           (?, 3, 32, 32)          -                       
+Grow_lod3                   -           (?, 3, 32, 32)          -                       
+64x64/Conv0_up              1179904     (?, 256, 64, 64)        (3, 3, 256, 512)        
+64x64/Conv1                 590080      (?, 256, 64, 64)        (3, 3, 256, 256)        
+ToRGB_lod2                  771         (?, 3, 64, 64)          (1, 1, 256, 3)          
+Upscale2D_3                 -           (?, 3, 64, 64)          -                       
+Grow_lod2                   -           (?, 3, 64, 64)          -                       
+128x128/Conv0_up            295040      (?, 128, 128, 128)      (3, 3, 128, 256)        
+128x128/Conv1               147584      (?, 128, 128, 128)      (3, 3, 128, 128)        
+ToRGB_lod1                  387         (?, 3, 128, 128)        (1, 1, 128, 3)          
+Upscale2D_4                 -           (?, 3, 128, 128)        -                       
+Grow_lod1                   -           (?, 3, 128, 128)        -                       
+256x256/Conv0_up            73792       (?, 64, 256, 256)       (3, 3, 64, 128)         
+256x256/Conv1               36928       (?, 64, 256, 256)       (3, 3, 64, 64)          
+ToRGB_lod0                  195         (?, 3, 256, 256)        (1, 1, 64, 3)           
+Upscale2D_5                 -           (?, 3, 256, 256)        -                       
+Grow_lod0                   -           (?, 3, 256, 256)        -                       
+images_out                  -           (?, 3, 256, 256)        -                       
+---                         ---         ---                     ---                     
+Total                       23044309                                                    
+
+
+D                           Params      OutputShape             WeightShape             
+---                         ---         ---                     ---                     
+images_in                   -           (?, 3, 256, 256)        -                       
+lod                         -           ()                      -                       
+FromRGB_lod0                256         (?, 64, 256, 256)       (1, 1, 3, 64)           
+256x256/Conv0               36928       (?, 64, 256, 256)       (3, 3, 64, 64)          
+256x256/Conv1_down          73856       (?, 128, 128, 128)      (3, 3, 64, 128)         
+Downscale2D                 -           (?, 3, 128, 128)        -                       
+FromRGB_lod1                512         (?, 128, 128, 128)      (1, 1, 3, 128)          
+Grow_lod0                   -           (?, 128, 128, 128)      -                       
+128x128/Conv0               147584      (?, 128, 128, 128)      (3, 3, 128, 128)        
+128x128/Conv1_down          295168      (?, 256, 64, 64)        (3, 3, 128, 256)        
+Downscale2D_1               -           (?, 3, 64, 64)          -                       
+FromRGB_lod2                1024        (?, 256, 64, 64)        (1, 1, 3, 256)          
+Grow_lod1                   -           (?, 256, 64, 64)        -                       
+64x64/Conv0                 590080      (?, 256, 64, 64)        (3, 3, 256, 256)        
+64x64/Conv1_down            1180160     (?, 512, 32, 32)        (3, 3, 256, 512)        
+Downscale2D_2               -           (?, 3, 32, 32)          -                       
+FromRGB_lod3                2048        (?, 512, 32, 32)        (1, 1, 3, 512)          
+Grow_lod2                   -           (?, 512, 32, 32)        -                       
+32x32/Conv0                 2359808     (?, 512, 32, 32)        (3, 3, 512, 512)        
+32x32/Conv1_down            2359808     (?, 512, 16, 16)        (3, 3, 512, 512)        
+Downscale2D_3               -           (?, 3, 16, 16)          -                       
+FromRGB_lod4                2048        (?, 512, 16, 16)        (1, 1, 3, 512)          
+Grow_lod3                   -           (?, 512, 16, 16)        -                       
+16x16/Conv0                 2359808     (?, 512, 16, 16)        (3, 3, 512, 512)        
+16x16/Conv1_down            2359808     (?, 512, 8, 8)          (3, 3, 512, 512)        
+Downscale2D_4               -           (?, 3, 8, 8)            -                       
+FromRGB_lod5                2048        (?, 512, 8, 8)          (1, 1, 3, 512)          
+Grow_lod4                   -           (?, 512, 8, 8)          -                       
+8x8/Conv0                   2359808     (?, 512, 8, 8)          (3, 3, 512, 512)        
+8x8/Conv1_down              2359808     (?, 512, 4, 4)          (3, 3, 512, 512)        
+Downscale2D_5               -           (?, 3, 4, 4)            -                       
+FromRGB_lod6                2048        (?, 512, 4, 4)          (1, 1, 3, 512)          
+Grow_lod5                   -           (?, 512, 4, 4)          -                       
+4x4/MinibatchStddev         -           (?, 1, 4, 4)            -                       
+4x4/Conv                    2364416     (?, 512, 4, 4)          (3, 3, 513, 512)        
+4x4/Dense0                  4194816     (?, 512)                (8192, 512)             
+4x4/Dense1                  513         (?, 1)                  (512, 1)                
+scores_out                  -           (?, 1)                  -                       
+labels_out                  -           (?, 0)                  -                       
+---                         ---         ---                     ---                     
+Total                       23052353                                                    
+
+Building TensorFlow graph...
+Setting up snapshot image grid...
+Setting up result dir...
+Saving results to results/000-pganicyGAN-preset-v2-1gpu-fp32
+Training...
+tick 1     kimg 160.3    lod 6.00  minibatch 128  time 1m 52s       sec/tick 112.0   sec/kimg 0.70    maintenance 53.1
+Resolution:  4
+tick 2     kimg 320.5    lod 6.00  minibatch 128  time 3m 44s       sec/tick 108.2   sec/kimg 0.68    maintenance 3.7
+Resolution:  4
+tick 3     kimg 480.8    lod 6.00  minibatch 128  time 5m 33s       sec/tick 108.5   sec/kimg 0.68    maintenance 0.1
+Resolution:  4
+tick 4     kimg 641.0    lod 6.00  minibatch 128  time 7m 21s       sec/tick 108.7   sec/kimg 0.68    maintenance 0.1
+Resolution:  4
+tick 5     kimg 800.8    lod 6.00  minibatch 128  time 9m 15s       sec/tick 113.4   sec/kimg 0.71    maintenance 0.1
+Resolution:  8
+tick 6     kimg 941.1    lod 5.82  minibatch 128  time 14m 41s      sec/tick 326.2   sec/kimg 2.32    maintenance 0.2
+Resolution:  8
+tick 7     kimg 1081.3   lod 5.65  minibatch 128  time 20m 23s      sec/tick 341.6   sec/kimg 2.44    maintenance 0.1
+Resolution:  8
+tick 8     kimg 1221.6   lod 5.47  minibatch 128  time 26m 07s      sec/tick 343.8   sec/kimg 2.45    maintenance 0.1
+Resolution:  8
+tick 9     kimg 1361.9   lod 5.30  minibatch 128  time 31m 51s      sec/tick 343.7   sec/kimg 2.45    maintenance 0.1
+Resolution:  8
+tick 10    kimg 1502.2   lod 5.12  minibatch 128  time 37m 34s      sec/tick 343.6   sec/kimg 2.45    maintenance 0.1
+Resolution:  8
+tick 11    kimg 1642.5   lod 5.00  minibatch 128  time 43m 16s      sec/tick 341.2   sec/kimg 2.43    maintenance 0.8
+Resolution:  8
+tick 12    kimg 1782.8   lod 5.00  minibatch 128  time 48m 52s      sec/tick 335.3   sec/kimg 2.39    maintenance 0.1
+Resolution:  8
+tick 13    kimg 1923.1   lod 5.00  minibatch 128  time 54m 27s      sec/tick 335.2   sec/kimg 2.39    maintenance 0.1
+Resolution:  8
+tick 14    kimg 2063.4   lod 5.00  minibatch 128  time 1h 00m 03s   sec/tick 335.6   sec/kimg 2.39    maintenance 0.1
+Resolution:  8
+tick 15    kimg 2203.6   lod 5.00  minibatch 128  time 1h 05m 38s   sec/tick 335.2   sec/kimg 2.39    maintenance 0.1
+Resolution:  8
+tick 16    kimg 2343.9   lod 5.00  minibatch 128  time 1h 11m 14s   sec/tick 335.2   sec/kimg 2.39    maintenance 0.1
+Resolution:  8
+tick 17    kimg 2464.3   lod 4.92  minibatch 128  time 1h 20m 34s   sec/tick 560.7   sec/kimg 4.66    maintenance 0.1
+Resolution:  16
+tick 18    kimg 2584.6   lod 4.77  minibatch 128  time 1h 33m 49s   sec/tick 793.9   sec/kimg 6.60    maintenance 0.2
+Resolution:  16
+tick 19    kimg 2704.9   lod 4.62  minibatch 128  time 1h 47m 03s   sec/tick 794.1   sec/kimg 6.60    maintenance 0.2
+Resolution:  16
+tick 20    kimg 2825.2   lod 4.47  minibatch 128  time 2h 00m 17s   sec/tick 794.3   sec/kimg 6.60    maintenance 0.1
+Resolution:  16
+tick 21    kimg 2945.5   lod 4.32  minibatch 128  time 2h 13m 32s   sec/tick 794.4   sec/kimg 6.60    maintenance 0.4
+Resolution:  16
+tick 22    kimg 3065.9   lod 4.17  minibatch 128  time 2h 26m 47s   sec/tick 794.5   sec/kimg 6.60    maintenance 0.2
+Resolution:  16
+tick 23    kimg 3186.2   lod 4.02  minibatch 128  time 2h 40m 01s   sec/tick 794.5   sec/kimg 6.60    maintenance 0.2
+Resolution:  16
+tick 24    kimg 3306.5   lod 4.00  minibatch 128  time 2h 53m 01s   sec/tick 779.4   sec/kimg 6.48    maintenance 0.2
+Resolution:  16
+tick 25    kimg 3426.8   lod 4.00  minibatch 128  time 3h 05m 58s   sec/tick 777.3   sec/kimg 6.46    maintenance 0.1
+Resolution:  16
+tick 26    kimg 3547.1   lod 4.00  minibatch 128  time 3h 18m 56s   sec/tick 777.2   sec/kimg 6.46    maintenance 0.2
+Resolution:  16
+tick 27    kimg 3667.5   lod 4.00  minibatch 128  time 3h 31m 53s   sec/tick 777.3   sec/kimg 6.46    maintenance 0.2
+Resolution:  16
+tick 28    kimg 3787.8   lod 4.00  minibatch 128  time 3h 44m 50s   sec/tick 777.3   sec/kimg 6.46    maintenance 0.2
+Resolution:  16
+tick 29    kimg 3908.1   lod 4.00  minibatch 128  time 3h 57m 48s   sec/tick 777.3   sec/kimg 6.46    maintenance 0.2
+Resolution:  16
+tick 30    kimg 4008.2   lod 3.99  minibatch 64   time 4h 10m 53s   sec/tick 785.1   sec/kimg 7.84    maintenance 0.2
+Resolution:  32
+tick 31    kimg 4108.3   lod 3.86  minibatch 64   time 4h 49m 54s   sec/tick 2340.5  sec/kimg 23.38   maintenance 0.5
+Resolution:  32
+tick 32    kimg 4208.4   lod 3.74  minibatch 64   time 5h 28m 56s   sec/tick 2341.6  sec/kimg 23.39   maintenance 0.2
+Resolution:  32
+tick 33    kimg 4308.5   lod 3.61  minibatch 64   time 6h 07m 58s   sec/tick 2341.8  sec/kimg 23.40   maintenance 0.2
+Resolution:  32
+tick 34    kimg 4408.6   lod 3.49  minibatch 64   time 6h 47m 00s   sec/tick 2342.2  sec/kimg 23.40   maintenance 0.2
+Resolution:  32
+tick 35    kimg 4508.7   lod 3.36  minibatch 64   time 7h 26m 03s   sec/tick 2342.4  sec/kimg 23.40   maintenance 0.2
+Resolution:  32
+tick 36    kimg 4608.8   lod 3.24  minibatch 64   time 8h 05m 06s   sec/tick 2342.5  sec/kimg 23.40   maintenance 0.2
+Resolution:  32
+tick 37    kimg 4708.9   lod 3.11  minibatch 64   time 8h 44m 08s   sec/tick 2342.6  sec/kimg 23.40   maintenance 0.2
+Resolution:  32
+tick 38    kimg 4809.0   lod 3.00  minibatch 64   time 9h 23m 07s   sec/tick 2338.3  sec/kimg 23.36   maintenance 0.2
+Resolution:  32
+tick 39    kimg 4909.1   lod 3.00  minibatch 64   time 10h 01m 20s  sec/tick 2292.7  sec/kimg 22.90   maintenance 0.2
+Resolution:  32
+tick 40    kimg 5009.2   lod 3.00  minibatch 64   time 10h 39m 33s  sec/tick 2293.1  sec/kimg 22.91   maintenance 0.2
+Resolution:  32
+tick 41    kimg 5109.2   lod 3.00  minibatch 64   time 11h 17m 46s  sec/tick 2292.3  sec/kimg 22.90   maintenance 0.4
+Resolution:  32
+tick 42    kimg 5209.3   lod 3.00  minibatch 64   time 11h 55m 59s  sec/tick 2292.6  sec/kimg 22.90   maintenance 0.2
+Resolution:  32
+tick 43    kimg 5309.4   lod 3.00  minibatch 64   time 12h 34m 11s  sec/tick 2292.3  sec/kimg 22.90   maintenance 0.2
+Resolution:  32
+tick 44    kimg 5409.5   lod 3.00  minibatch 64   time 13h 12m 23s  sec/tick 2292.1  sec/kimg 22.90   maintenance 0.2
+Resolution:  32
+tick 45    kimg 5509.6   lod 3.00  minibatch 64   time 13h 50m 35s  sec/tick 2291.3  sec/kimg 22.89   maintenance 0.2
+Resolution:  32
+tick 46    kimg 5600.4   lod 3.00  minibatch 32   time 14h 25m 22s  sec/tick 2086.5  sec/kimg 22.99   maintenance 0.2
+Resolution:  64
+tick 47    kimg 5680.4   lod 2.90  minibatch 32   time 15h 38m 00s  sec/tick 4358.5  sec/kimg 54.48   maintenance 0.4
+Resolution:  64
+tick 48    kimg 5760.4   lod 2.80  minibatch 32   time 16h 50m 38s  sec/tick 4357.0  sec/kimg 54.46   maintenance 0.3
+Resolution:  64
+tick 49    kimg 5840.4   lod 2.70  minibatch 32   time 18h 03m 16s  sec/tick 4358.4  sec/kimg 54.48   maintenance 0.3
+Resolution:  64
+tick 50    kimg 5920.4   lod 2.60  minibatch 32   time 19h 15m 56s  sec/tick 4359.8  sec/kimg 54.50   maintenance 0.3
+Resolution:  64
+tick 51    kimg 6000.4   lod 2.50  minibatch 32   time 20h 28m 37s  sec/tick 4360.5  sec/kimg 54.51   maintenance 0.5
+Resolution:  64
+tick 52    kimg 6080.4   lod 2.40  minibatch 32   time 21h 41m 20s  sec/tick 4362.1  sec/kimg 54.53   maintenance 0.3
+Resolution:  64
+tick 53    kimg 6160.4   lod 2.30  minibatch 32   time 22h 54m 01s  sec/tick 4361.1  sec/kimg 54.51   maintenance 0.3
+Resolution:  64
+tick 54    kimg 6240.4   lod 2.20  minibatch 32   time 1d 00h 06m   sec/tick 4359.9  sec/kimg 54.50   maintenance 0.2
+Resolution:  64
+tick 55    kimg 6320.4   lod 2.10  minibatch 32   time 1d 01h 19m   sec/tick 4362.4  sec/kimg 54.53   maintenance 0.3
+Resolution:  64
+tick 56    kimg 6400.4   lod 2.00  minibatch 32   time 1d 02h 32m   sec/tick 4363.1  sec/kimg 54.54   maintenance 0.2
+Resolution:  64
+tick 57    kimg 6480.4   lod 2.00  minibatch 32   time 1d 03h 42m   sec/tick 4213.5  sec/kimg 52.67   maintenance 0.3
+Resolution:  64
+tick 58    kimg 6560.4   lod 2.00  minibatch 32   time 1d 04h 52m   sec/tick 4213.1  sec/kimg 52.66   maintenance 0.3
+Resolution:  64
+tick 59    kimg 6640.4   lod 2.00  minibatch 32   time 1d 06h 02m   sec/tick 4213.4  sec/kimg 52.67   maintenance 0.3
+Resolution:  64
+tick 60    kimg 6720.4   lod 2.00  minibatch 32   time 1d 07h 13m   sec/tick 4212.6  sec/kimg 52.66   maintenance 0.3
+Resolution:  64
+tick 61    kimg 6800.4   lod 2.00  minibatch 32   time 1d 08h 23m   sec/tick 4212.6  sec/kimg 52.66   maintenance 0.5
+Resolution:  64
+tick 62    kimg 6880.4   lod 2.00  minibatch 32   time 1d 09h 33m   sec/tick 4212.7  sec/kimg 52.66   maintenance 0.3
+Resolution:  64
+tick 63    kimg 6960.4   lod 2.00  minibatch 32   time 1d 10h 43m   sec/tick 4212.4  sec/kimg 52.66   maintenance 0.3
+Resolution:  64
+tick 64    kimg 7040.4   lod 2.00  minibatch 32   time 1d 11h 53m   sec/tick 4212.2  sec/kimg 52.65   maintenance 0.3
+Resolution:  64
+tick 65    kimg 7120.4   lod 2.00  minibatch 32   time 1d 13h 04m   sec/tick 4212.3  sec/kimg 52.65   maintenance 0.3
+Resolution:  64
+tick 66    kimg 7200.2   lod 2.00  minibatch 16   time 1d 14h 14m   sec/tick 4216.3  sec/kimg 52.83   maintenance 0.3
+Resolution:  128
+tick 67    kimg 7260.2   lod 1.92  minibatch 16   time 1d 15h 55m   sec/tick 6076.8  sec/kimg 101.23  maintenance 0.8
+Resolution:  128
+tick 68    kimg 7320.3   lod 1.85  minibatch 16   time 1d 17h 36m   sec/tick 6077.2  sec/kimg 101.23  maintenance 0.4
+Resolution:  128
+tick 69    kimg 7380.3   lod 1.77  minibatch 16   time 1d 19h 18m   sec/tick 6082.7  sec/kimg 101.32  maintenance 0.4
+Resolution:  128
+tick 70    kimg 7440.3   lod 1.70  minibatch 16   time 1d 20h 59m   sec/tick 6085.4  sec/kimg 101.37  maintenance 0.4
+Resolution:  128
+tick 71    kimg 7500.4   lod 1.62  minibatch 16   time 1d 22h 41m   sec/tick 6086.3  sec/kimg 101.38  maintenance 0.7
+Resolution:  128
+tick 72    kimg 7560.4   lod 1.55  minibatch 16   time 2d 00h 22m   sec/tick 6088.0  sec/kimg 101.41  maintenance 0.5
+Resolution:  128
+tick 73    kimg 7620.4   lod 1.47  minibatch 16   time 2d 02h 04m   sec/tick 6091.8  sec/kimg 101.48  maintenance 0.5
+Resolution:  128
+tick 74    kimg 7680.4   lod 1.40  minibatch 16   time 2d 03h 45m   sec/tick 6094.2  sec/kimg 101.52  maintenance 0.5
+Resolution:  128
+tick 75    kimg 7740.5   lod 1.32  minibatch 16   time 2d 05h 27m   sec/tick 6093.6  sec/kimg 101.51  maintenance 0.5
+Resolution:  128
+tick 76    kimg 7800.5   lod 1.25  minibatch 16   time 2d 07h 08m   sec/tick 6092.1  sec/kimg 101.48  maintenance 0.5
+Resolution:  128
+tick 77    kimg 7860.5   lod 1.17  minibatch 16   time 2d 08h 50m   sec/tick 6092.0  sec/kimg 101.48  maintenance 0.5
+Resolution:  128
+tick 78    kimg 7920.6   lod 1.10  minibatch 16   time 2d 10h 31m   sec/tick 6090.6  sec/kimg 101.46  maintenance 0.5
+Resolution:  128
+tick 79    kimg 7980.6   lod 1.02  minibatch 16   time 2d 12h 13m   sec/tick 6088.7  sec/kimg 101.42  maintenance 0.5
+Resolution:  128
+tick 80    kimg 8040.6   lod 1.00  minibatch 16   time 2d 13h 52m   sec/tick 5937.9  sec/kimg 98.91   maintenance 0.5
+Resolution:  128
+tick 81    kimg 8100.7   lod 1.00  minibatch 16   time 2d 15h 30m   sec/tick 5866.4  sec/kimg 97.72   maintenance 0.7
+Resolution:  128
+tick 82    kimg 8160.7   lod 1.00  minibatch 16   time 2d 17h 08m   sec/tick 5866.1  sec/kimg 97.72   maintenance 0.5
+Resolution:  128
+tick 83    kimg 8220.7   lod 1.00  minibatch 16   time 2d 18h 45m   sec/tick 5867.2  sec/kimg 97.73   maintenance 0.5
+Resolution:  128
+tick 84    kimg 8280.8   lod 1.00  minibatch 16   time 2d 20h 23m   sec/tick 5869.1  sec/kimg 97.77   maintenance 0.5
+Resolution:  128
+tick 85    kimg 8340.8   lod 1.00  minibatch 16   time 2d 22h 01m   sec/tick 5870.4  sec/kimg 97.79   maintenance 0.5
+Resolution:  128
+tick 86    kimg 8400.8   lod 1.00  minibatch 16   time 2d 23h 39m   sec/tick 5872.5  sec/kimg 97.82   maintenance 0.5
+Resolution:  128
+tick 87    kimg 8460.9   lod 1.00  minibatch 16   time 3d 01h 17m   sec/tick 5873.2  sec/kimg 97.84   maintenance 0.5
+Resolution:  128
+tick 88    kimg 8520.9   lod 1.00  minibatch 16   time 3d 02h 55m   sec/tick 5872.7  sec/kimg 97.83   maintenance 0.5
+Resolution:  128
+tick 89    kimg 8580.9   lod 1.00  minibatch 16   time 3d 04h 33m   sec/tick 5871.7  sec/kimg 97.81   maintenance 0.5
+Resolution:  128
+tick 90    kimg 8641.0   lod 1.00  minibatch 16   time 3d 06h 10m   sec/tick 5869.9  sec/kimg 97.78   maintenance 0.5
+Resolution:  128
+tick 91    kimg 8701.0   lod 1.00  minibatch 16   time 3d 07h 48m   sec/tick 5868.5  sec/kimg 97.76   maintenance 0.7
+Resolution:  128
+tick 92    kimg 8761.0   lod 1.00  minibatch 16   time 3d 09h 26m   sec/tick 5868.6  sec/kimg 97.76   maintenance 0.5
+Resolution:  128
+tick 93    kimg 8801.0   lod 1.00  minibatch 8    time 3d 10h 33m   sec/tick 3991.4  sec/kimg 99.78   maintenance 0.5
+Resolution:  256
+tick 94    kimg 8841.0   lod 0.95  minibatch 8    time 3d 12h 32m   sec/tick 7187.4  sec/kimg 179.68  maintenance 0.7
+Resolution:  256
+tick 95    kimg 8881.0   lod 0.90  minibatch 8    time 3d 14h 32m   sec/tick 7190.7  sec/kimg 179.77  maintenance 0.7
+Resolution:  256
+tick 96    kimg 8921.0   lod 0.85  minibatch 8    time 3d 16h 32m   sec/tick 7190.2  sec/kimg 179.76  maintenance 0.7
+Resolution:  256
+tick 97    kimg 8961.0   lod 0.80  minibatch 8    time 3d 18h 32m   sec/tick 7191.7  sec/kimg 179.79  maintenance 0.7
+Resolution:  256
+tick 98    kimg 9001.0   lod 0.75  minibatch 8    time 3d 20h 32m   sec/tick 7192.0  sec/kimg 179.80  maintenance 0.7
+Resolution:  256
+tick 99    kimg 9041.0   lod 0.70  minibatch 8    time 3d 22h 32m   sec/tick 7195.5  sec/kimg 179.89  maintenance 0.7
+Resolution:  256
+tick 100   kimg 9081.0   lod 0.65  minibatch 8    time 4d 00h 32m   sec/tick 7198.7  sec/kimg 179.97  maintenance 0.8
+Resolution:  256
+tick 101   kimg 9121.0   lod 0.60  minibatch 8    time 4d 02h 32m   sec/tick 7201.1  sec/kimg 180.03  maintenance 1.1
+Resolution:  256
+tick 102   kimg 9161.0   lod 0.55  minibatch 8    time 4d 04h 32m   sec/tick 7201.6  sec/kimg 180.04  maintenance 0.9
+Resolution:  256
+tick 103   kimg 9201.0   lod 0.50  minibatch 8    time 4d 06h 32m   sec/tick 7202.2  sec/kimg 180.06  maintenance 0.8
+Resolution:  256
+tick 104   kimg 9241.0   lod 0.45  minibatch 8    time 4d 08h 32m   sec/tick 7203.0  sec/kimg 180.08  maintenance 0.9
+Resolution:  256
+tick 105   kimg 9281.0   lod 0.40  minibatch 8    time 4d 10h 32m   sec/tick 7204.4  sec/kimg 180.11  maintenance 0.9
+Resolution:  256
+tick 106   kimg 9321.0   lod 0.35  minibatch 8    time 4d 12h 32m   sec/tick 7206.7  sec/kimg 180.17  maintenance 0.9
+Resolution:  256
+tick 107   kimg 9361.0   lod 0.30  minibatch 8    time 4d 14h 32m   sec/tick 7208.3  sec/kimg 180.21  maintenance 0.9
+Resolution:  256
+tick 108   kimg 9401.0   lod 0.25  minibatch 8    time 4d 16h 32m   sec/tick 7208.4  sec/kimg 180.21  maintenance 0.9
+Resolution:  256
+tick 109   kimg 9441.0   lod 0.20  minibatch 8    time 4d 18h 33m   sec/tick 7210.2  sec/kimg 180.25  maintenance 0.9
+Resolution:  256
+tick 110   kimg 9481.0   lod 0.15  minibatch 8    time 4d 20h 33m   sec/tick 7210.2  sec/kimg 180.25  maintenance 0.9
+Resolution:  256
+tick 111   kimg 9521.0   lod 0.10  minibatch 8    time 4d 22h 33m   sec/tick 7210.8  sec/kimg 180.27  maintenance 1.1
+Resolution:  256
+tick 112   kimg 9561.0   lod 0.05  minibatch 8    time 5d 00h 33m   sec/tick 7207.9  sec/kimg 180.20  maintenance 0.9
+Resolution:  256
+tick 113   kimg 9601.0   lod 0.00  minibatch 8    time 5d 02h 33m   sec/tick 7195.4  sec/kimg 179.89  maintenance 0.9
+Resolution:  256
+tick 114   kimg 9641.0   lod 0.00  minibatch 8    time 5d 04h 28m   sec/tick 6869.8  sec/kimg 171.75  maintenance 0.9
+Resolution:  256
+tick 115   kimg 9681.0   lod 0.00  minibatch 8    time 5d 06h 22m   sec/tick 6871.5  sec/kimg 171.79  maintenance 0.9
+Resolution:  256
