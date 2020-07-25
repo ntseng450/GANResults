@@ -1,0 +1,4 @@
+# GANResults
+
+Image Folders:
+
