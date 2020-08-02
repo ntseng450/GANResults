@@ -21,8 +21,8 @@ convertArr = np.array([[64, 128, 64], [192, 0, 128], [0, 128, 192], [0, 128, 64]
 
 def main():
   	counter = 0
-    imagefoldername = 'first_fifty_fakes'
-    savefoldername = 'fff_rounded'
+	imagefoldername = 'first_fifty_fakes'
+	savefoldername = 'fff_rounded'
 	for filename in os.listdir(imagefoldername):
     	img = Image.open(imagefoldername + '/' +filename)
     	arr = np.array(img)
